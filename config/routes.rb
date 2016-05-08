@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'user/index'
+
+  get 'user/create'
+
+  get 'user/new'
+
+  get 'user/destroy'
+
+  get 'user/show'
+
   devise_for :users
   resources :restaurants do
     collection do
@@ -13,6 +23,8 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   root 'restaurants#index'
+
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
