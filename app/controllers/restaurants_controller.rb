@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+    @restaurants_by_rating = Restaurant.all.joins(:reviews).select("restaurants.id, restaurants.name, restaurants.phone, restaurants.address, restaurants.website, avg(reviews.rating) as average_rating").group("restaurants.id").order("average_rating DESC")
   end
 
   # GET /restaurants/1
