@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
 
   def search
     if params[:search].present?
-      @restaurants = Restaurant.search(params[:search])
+      @restaurants = Restaurant.search(params[:search], :limit => 1000)
     else
       @restaurants = Restaurant.all
     end
